@@ -1,0 +1,36 @@
+{
+  "name": "private-ticketing-typescript-client",
+  "version": "1.0.0",
+  "description": "TypeScript client for COTI Private Ticketing smart contract",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/demo.js",
+    "dev": "ts-node src/demo.ts",
+    "clean": "rm -rf dist",
+    "demo": "npm run build && npm run start",
+    "test": "npm run build && node dist/test.js"
+  },
+  "keywords": [
+    "coti",
+    "blockchain",
+    "privacy",
+    "ticketing",
+    "typescript",
+    "ethers"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "ethers": "^6.8.0",
+    "@coti-io/coti-ethers": "^1.0.0",
+    "@coti-io/coti-sdk-typescript": "^1.0.0",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.0",
+    "typescript": "^5.2.0",
+    "ts-node": "^10.9.0"
+  }
+}

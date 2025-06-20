@@ -1,0 +1,50 @@
+🎭 Private Ticketing Demo Starting...
+==================================================
+🔗 Initializing connection to COTI network...
+✅ Connected! Account: 0x9f720d3f54d29bac0256aD6769eB301FeB95CA0D
+
+🚀 Deploying PrivateTicketing contract...
+⏳ Waiting for deployment confirmation...
+✅ Contract deployed at: 0xb05bEC0B8Fa2BB35925Ac9A05336971DC2eCaCa1
+
+🎫 Creating event: COTI Privacy Concert
+💰 Price: 100 (encrypted)
+📊 Total Supply: 1000 (encrypted)
+✅ Event created with ID: 1
+🔑 Setting up purchase permissions...
+✅ Purchase permission granted to 0x9f720d3f54d29bac0256aD6769eB301FeB95CA0D
+
+📅 Getting info for event 1...
+✅ Event Info:
+   📛 Name: COTI Privacy Concert
+   👤 Organizer: 0x9f720d3f54d29bac0256aD6769eB301FeB95CA0D
+   📅 Date: 2025-06-25 17:44:00
+   🔒 Encrypted Price: 2842156129340549018457670650257275336666979819380754977205228058272579358334
+   🔒 Encrypted Supply: 88902474118353336029611022813059070892892921181128093424048913446598252370103
+   🔒 Encrypted Sold: 65155349129839882128637186511415326671162658751313967036457143476447113784543
+   🔄 Resale Allowed: True
+
+🔍 Debugging event 1 state...
+📊 Event State:
+   Event ID: 1
+   Organizer: 0x9f720d3f54d29bac0256aD6769eB301FeB95CA0D
+   Name: COTI Privacy Concert
+   Event Date: 2025-06-25 17:44:00
+   Encrypted Price: 2842156129340549018457670650257275336666979819380754977205228058272579358334
+   Encrypted Total Supply: 88902474118353336029611022813059070892892921181128093424048913446598252370103
+   Encrypted Tickets Sold: 65155349129839882128637186511415326671162658751313967036457143476447113784543
+   Resale Allowed: True
+   Encrypted Resale Markup: 35360231977353973888822174657450246869377242929547988769767481750984143622057
+🔓 You are the organizer, attempting to decrypt values...
+   (Decryption would require specific permission setup)
+✅ Event appears to be valid
+
+🎟️ Purchasing ticket for event 1...
+🧪 Testing purchase with call() first...
+❌ Test call failed: ('execution reverted', 'no data')
+This indicates the transaction would fail. Possible causes:
+   1. No permission to purchase tickets
+   2. Event doesn't exist
+   3. All tickets are sold out
+   4. MPC operations failing
+❌ Ticket purchase failed, aborting demo

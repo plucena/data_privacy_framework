@@ -1,0 +1,4 @@
+**.pyc
+.env
+.run/
+env/

@@ -107,7 +107,7 @@ mapping(address => mapping(string => uint256)) public permissions; // caller => 
 mapping(uint256 => Condition) public conditions; // condition_id => condition details
 ```
 
-So after your call:
+So after the call:
 
 - `permissions[msg.sender]["admin"]` = `1` (condition ID)
 - `conditions[1]` = the `Condition` struct with your parameters

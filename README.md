@@ -265,20 +265,19 @@ await contract.setItem("oil_price", encryptedPrice);
 ```
 @Claude4 @coti-ethers @solidity/PrivateTicketingDebug.sol 
 
-create a typescript client that exposes all the functions of the PrivateTicketingDebug.sol  using @coti-ethers library
-deployed on COTI.Testnetwork at
+save all your work and only change sc-client folder
+create a typescript client that compiles, deploy the PrivateTicketing smart contract 
+and exposes all the functions of the PrivateTicketing using @coti-ethers library
+deploy it on COTI.Testnet at
+
 COTI Network Configuration
 COTI_RPC_URL=https://testnet.coti.io/rpc
 COTI_CHAIN_ID=7082400
 
-Example Private Keys (REPLACE WITH YOUR TEST KEYS)
 ACCOUNT_ENCRYPTION_KEY='49d9a80420ffe615de763b8cebd64dca'
-
 PRIVATE_KEY=9ba41a77e1408b426b9fe43078aad218ee16f06fafad4896411a07611532fd5c
 PRIVATE_KEY_1=9ba41a77e1408b426b9fe43078aad218ee16f06fafad4896411a07611532fd5c
 PRIVATE_KEY_2=0xfedcba0987654321fedcba0987654321fedcba0987654321fedcba0987654321
-
-CONTRACT_ADDRESS=0xbdFAb135CAcCF157216d36Bb822aC37419A3387B
 
 ```
 
@@ -292,7 +291,8 @@ node dist/demo.jsnode
 ### PROMPT FOR CREATING UI ON REPLIT
 
 ```
-@typescript-client/dist/demo.js @typescript-client/dist/PrivateTicketingClient.js @coti-ethers/build/cotiethers.js
+@typescript-client/dist/demo.js @typescript-client/dist/PrivateTicketingClient.ts 
+@coti-ethers/build/cotiethers.js
 
 Given the client above for the coti smart contract deployed at
 

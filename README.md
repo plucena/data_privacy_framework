@@ -84,7 +84,7 @@ function getClearOilCotiPrice()
 
 
 ```
-PROMPT FOR SMART CONTRACT**`
+**PROMPT FOR SMART CONTRACT**`
 @Cluade4 @DataPrivacyFramework.sol
 
 A ticketing system that ensures user privacy. 

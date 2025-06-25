@@ -219,16 +219,18 @@ function getClearOilCotiPrice()
 
 ### PROMPT FOR SMART CONTRACT
 
-```
-@Cluade4 @DataPrivacyFramework.sol @OnChainDatabase.sol
+@Cluade4 @DataPrivacyFramework.sol @OnChainDatabase.sol @MPCCore.sol @MPCInterface.sol
 
-Creeate a COTI Smart Contract using DataPrivacyFramework.sol for a ticketing system 
-that ensures user privacy. 
-Users can purchase and store event tickets digitally, 
-with each ticket uniquely tied to its owner to prevent counterfeiting and unauthorized 
-resale. 
-Implementing garbled circuits for privacy allows users to prove ticket ownership 
-without revealing personal information. Smart contracts can automate ticket transfers 
+```
+Based on the structure of OnChainDatabase.sol
+Create a COTI Smart Contract using DataPrivacyFramework.sol for a ticketing system
+that ensures user privacy. Eg: keep ticket,  event and ticketownership private information
+where appliable.
+Users can purchase and store event tickets digitally,
+with each ticket uniquely tied to its owner to prevent counterfeiting and unauthorized
+resale.
+Implementing garbled circuits for privacy allows users to prove ticket ownership
+without revealing personal information. Smart contracts can automate ticket transfers
 and enforce resale policies, ensuring fair pricing and reducing fraud.
 Save smart contract on sc folder
 ```

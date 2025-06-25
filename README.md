@@ -117,16 +117,44 @@ await contract.setItem("oil_price", encryptedPrice);
  
 ```
 
+### PROMPT FOR CLIENT
 
-> ```
-> RUN PYTHON DEMO
->
-> cd solidity
-> python3 -m venv coti
-> source coti/bin/activate
-> pip install -r requirements.txt
-> python private_ticketing_demo_fixed.py 
->
-> ```
+```
+@Claude4
 
-PROMPTS
+```
+
+> cd typescript-client
+> node dist/demo.jsnode
+
+
+### CREATING UI ON REPLIT
+
+```
+@typescript-client/demo.js 
+
+Given the client above for the coti smart contract deployed at
+
+COTI Network Configuration
+COTI_RPC_URL=https://testnet.coti.io/rpc
+COTI_CHAIN_ID=7082400
+
+Example Private Keys (REPLACE WITH YOUR TEST KEYS)
+ACCOUNT_ENCRYPTION_KEY='49d9a80420ffe615de763b8cebd64dca'
+
+PRIVATE_KEY=9ba41a77e1408b426b9fe43078aad218ee16f06fafad4896411a07611532fd5c
+PRIVATE_KEY_1=9ba41a77e1408b426b9fe43078aad218ee16f06fafad4896411a07611532fd5c
+PRIVATE_KEY_2=0xfedcba0987654321fedcba0987654321fedcba0987654321fedcba0987654321
+
+Optional: Deploy contract address (leave empty to deploy new)
+CONTRACT_ADDRESS=0xbdFAb135CAcCF157216d36Bb822aC37419A3387B
+
+Optional: Gas settings
+GAS_LIMIT=500000
+GAS_PRICE=1000000000
+
+Create a React UI for the app using the coti-etherJS client files attached for smart contract comunication
+
+
+
+```

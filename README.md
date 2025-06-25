@@ -33,7 +33,7 @@ How `setPermission(InputData(msg.sender, "admin", true, 0, 0, false, false, 0, a
 
 1. **InputData Struct Breakdown**
 
-The `InputData` struct has these fields, and here's what each parameter means in your example:
+The `InputData` struct has these fields, and here's what each parameter means:
 
 ```solidity
 struct InputData {

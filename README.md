@@ -222,7 +222,7 @@ function getClearOilCotiPrice()
 ```
 @Cluade4 @DataPrivacyFramework.sol @OnChainDatabase.sol
 
-A ticketing system that ensures user privacy. 
+Creere a COTI Smart Contract for a ticketing system that ensures user privacy. 
 Users can purchase and store event tickets digitally, 
 with each ticket uniquely tied to its owner to prevent counterfeiting and unauthorized resale. Implementing garbled circuits for privacy allows users to prove ticket ownership without revealing personal information. Smart contracts can automate ticket transfers and enforce resale policies, ensuring fair pricing and reducing fraud.
 ```

@@ -29,6 +29,141 @@ contract YourContract is DataPrivacyFrameworkMpc {
 }
 ```
 
+How `setPermission(InputData(msg.sender, "admin", true, 0, 0, false, false, 0, address(0), ""))` Works
+
+1. **InputData Struct Breakdown**
+
+The `InputData` struct has these fields, and here's what each parameter means in your example:
+
+```solidity
+struct InputData {
+    address caller;          // msg.sender (contract deployer)
+    string operation;        // "admin" 
+    bool active;            // true (permission is active)
+    uint256 timestampBefore; // 0 (no expiration date)
+    uint256 timestampAfter;  // 0 (no start delay)
+    bool falseKey;          // false (don't force denial)
+    bool trueKey;           // false (don't force approval)
+    uint256 uintParameter;   // 0 (no uint parameter constraint)
+    address addressParameter; // address(0) (no address parameter constraint)
+    string stringParameter;  // "" (no string parameter constraint)
+}
+```
+
+So the call translates to:
+
+```solidity
+InputData(
+    msg.sender,    // caller = contract deployer's address
+    "admin",       // operation = "admin" 
+    true,          // active = permission is enabled
+    0,             // timestampBefore = no expiration
+    0,             // timestampAfter = no start delay  
+    false,         // falseKey = don't force deny
+    false,         // trueKey = don't force allow
+    0,             // uintParameter = no constraint
+    address(0),    // addressParameter = no constraint
+    ""             // stringParameter = no constraint
+)
+```
+
+### 2. **What `setPermission` Does**
+
+The function creates a new permission entry:
+
+```solidity
+function setPermission(InputData memory inputData) public returns (bool) {
+    if (permissions[inputData.caller][inputData.operation] == 0) {
+        // First time setting this permission
+        permissions[inputData.caller][inputData.operation] = _conditionsCount;
+      
+        conditions[_conditionsCount] = Condition(
+            _conditionsCount,           // id
+            inputData.caller,           // msg.sender
+            inputData.operation,        // "admin"
+            inputData.active,           // true
+            inputData.falseKey,         // false
+            inputData.trueKey,          // false
+            inputData.timestampBefore,  // 0
+            inputData.timestampAfter,   // 0
+            inputData.uintParameter,    // 0
+            inputData.addressParameter, // address(0)
+            inputData.stringParameter   // ""
+        );
+      
+        ++_conditionsCount;
+        ++activePermissions[inputData.caller];
+    }
+    // ... else update existing permission
+}
+```
+
+### 3. **The Permission System Architecture**
+
+The framework uses a two-level mapping system:
+
+```solidity
+mapping(address => mapping(string => uint256)) public permissions; // caller => operation => condition_id
+mapping(uint256 => Condition) public conditions; // condition_id => condition details
+```
+
+So after your call:
+
+- `permissions[msg.sender]["admin"]` = `1` (condition ID)
+- `conditions[1]` = the `Condition` struct with your parameters
+- `activePermissions[msg.sender]` = `1` (this address has 1 active permission)
+
+4. **How It Works in Practice**
+
+When someone calls a function protected by:
+
+```solidity
+onlyAllowedUserOperation("admin", 0, address(0), "")
+```
+
+The modifier checks:
+
+1. Is the `"admin"` operation allowed? ✅ (set in constructor: `allowedOperations["admin"] = true`)
+2. Does `msg.sender` have permission for `"admin"`?
+   - Look up `permissions[msg.sender]["admin"]` → gets condition ID
+   - Look up `conditions[conditionId]` → gets the condition details
+   - Check if condition is active and constraints are met
+
+In the constructor, this call:
+
+```solidity
+setPermission(InputData(msg.sender, "admin", true, 0, 0, false, false, 0, address(0), ""));
+```
+
+**Grants the contract deployer full admin privileges** by:
+
+- ✅ **Active**: `true` - permission is enabled
+- ✅ **No time limits**: `timestampBefore: 0, timestampAfter: 0` - always valid
+- ✅ **No forced outcomes**: `falseKey: false, trueKey: false` - normal evaluation
+- ✅ **No parameter constraints**: all parameters are neutral/empty
+
+This means the deployer can call any function requiring `"admin"` privileges without restrictions.
+
+6. **Alternative Examples**
+
+Here are some other permission configurations:
+
+```solidity
+// Time-limited permission (valid until timestamp 1735689600)
+setPermission(InputData(user, "admin", true, 1735689600, 0, false, false, 0, address(0), ""));
+
+// Permission that always allows (trueKey = true)
+setPermission(InputData(user, "admin", true, 0, 0, false, true, 0, address(0), ""));
+
+// Permission with uint parameter constraint (only for eventId = 123)
+setPermission(InputData(user, "purchase_ticket", true, 0, 0, false, false, 123, address(0), ""));
+
+// Disabled permission
+setPermission(InputData(user, "admin", false, 0, 0, false, false, 0, address(0), ""));
+```
+
+This permission system provides fine-grained access control for your privacy-preserving smart contracts!
+
 ### 2. **Storing Encrypted Data**
 
 ```

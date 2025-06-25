@@ -82,10 +82,10 @@ function getClearOilCotiPrice()
 }
 ```
 
+### PROMPT FOR SMART CONTRACT
 
 ```
-**PROMPT FOR SMART CONTRACT**`
-@Cluade4 @DataPrivacyFramework.sol
+@Cluade4 @DataPrivacyFramework.sol @OnChainDatabase.sol
 
 A ticketing system that ensures user privacy. 
 Users can purchase and store event tickets digitally, 
